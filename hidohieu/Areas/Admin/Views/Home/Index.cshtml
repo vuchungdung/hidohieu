@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<marquee direction="right" behavior="alternate">
+    <font size="6">
+        <script type="text/javascript">
+            farbbibliothek = new Array();
+            farbbibliothek[0] = new Array("#000");
+            farbbibliothek[1] = new Array("#000");
+            farbbibliothek[2] = new Array("#000");
+            farbbibliothek[3] = new Array("#000");
+            farbbibliothek[4] = new Array("#000");
+            farbbibliothek[5] = new Array("#000");
+            farbbibliothek[6] = new Array("#000");
+            farben = farbbibliothek[4];
+            function farbschrift() {
+                for (var i = 0 ; i < Buchstabe.length; i++) {
+                    document.all["a" + i].style.color = farben[i];
+                }
+                farbverlauf();
+            }
+            function string2array(text) {
+                Buchstabe = new Array();
+                while (farben.length < text.length) {
+                    farben = farben.concat(farben);
+                }
+                k = 0;
+                while (k <= text.length) {
+                    Buchstabe[k] = text.charAt(k);
+                    k++;
+                }
+            }
+            function divserzeugen() {
+                for (var i = 0 ; i < Buchstabe.length; i++) {
+                    document.write("<span id='a" + i + "' class='a" + i + "'>" + Buchstabe[i] + "<\/span>");
+                }
+                farbschrift();
+            }
+            var a = 1;
+            function farbverlauf() {
+                for (var i = 0 ; i < farben.length; i++) {
+                    farben[i - 1] = farben[i];
+                }
+                farben[farben.length - 1] = farben[-1];
+
+                setTimeout("farbschrift()", 60);
+            }
+            //
+            var farbsatz = 1;
+            function farbtauscher() {
+                farben = farbbibliothek[farbsatz];
+                while (farben.length < text.length) {
+                    farben = farben.concat(farben);
+                }
+                farbsatz = Math.floor(Math.random() * (farbbibliothek.length - 0.0001));
+            }
+            setInterval("farbtauscher()", 5000);
+
+            text = "Xin Chào ADMINISTRATOR"; //h
+            string2array(text);
+            divserzeugen();
+            //document.write(text);
+        </script>
+    </font>
+</marquee>
+

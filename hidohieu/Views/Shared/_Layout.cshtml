@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @*<script type="text/javascript" src="http://www.trungtamtinhoc.edu.vn/api/snowstorm.js"></script>
+    <script type="text/javascript" src="http://webquangnam.com/jsShare/tuyetroi.js"></script>*@
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Website thương mại điện tử">
+    <meta name="author" content="MHN">
+    <title>TruyenD</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/Content/Client/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="/Content/Client/css/shop-homepage.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @*<link href="/Content/Client/css/font-awesome.min.css" rel="stylesheet" />*@
+    <link href="/Content/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    @*DataTables*@
+    <link href="/Content/Client/css/jquery.dataTables.min.css" rel="stylesheet" />
+    @*!DataTables*@
+    <link href="/Content/Client/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav style="background-color: #FCF" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/" style="font-size:25px;"> Trang Chủ  |</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Home/Contact"style="font-size:25px;">Liên Hệ</a>
+                    </li>
+                </ul>
+                <div class="col-sm-3 col-md-3">
+                    @using (Html.BeginForm("SearchResult", "Home", FormMethod.Post, new { @class = "navbar-form", @role = "search" }))
+                    {
+                        <div class="input-group">
+                            @*<input style="width: 370px;" type="text" class="form-control" placeholder="Tìm kiếm sách..." name="search">*@
+                            @Html.TextBox("txtSearch", "", htmlAttributes: new { @class = "form-control", @placeholder = "Tìm kiếm sách...", @style = "width: 370px" })
+                            <span  class="input-group-btn">
+                                <button style="background: #ff6a00;" class="btn btn-default" type="submit">
+                                    <span style="color:white">Tìm</span>
+                                    </button>
+                            </span>
+                        </div>
+                    }
+                </div>
+                    @*Menu right*@
+                    @Html.Action("Login", "User")
+                    @*ket thuc Menu right*@
+</div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        @RenderBody()
+    </div>
+    <!-- /.container -->
+    <div class="container">
+        <hr>
+        <!-- Footer -->
+        <footer >
+            <div style="background-color:#FCF ;padding-bottom: 3px;" class="footer" id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> Administrator </h3>
+                            <ul>
+                                <li> <a href="https://www.facebook.com/ndat98"> Phạm Văn Nghĩa </a> </li>
+                                <li> <a href="https://www.nguyentuanblog.com"> DavidNghia.Com </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> Helps </h3>
+                            <ul>
+                                <li> <a href="/Home/QuyDinh"> Qui định </a> </li>         
+                                <li> <a href="/Home/Thanhtoan"> Thanh toán </a> </li>
+                                <li> <a href="/Home/VanChuyen"> Vận chuyển </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> Support </h3>
+                            <ul>
+                                <li> <a href="/Home/DoiTra"> Chính sách đổi trả </a> </li>
+                                <li> <a href="/Home/Help"> Các câu hỏi thường gặp </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> Acounts </h3>
+                            <ul>
+                                <li> <a href="/User/Register"> Đăng ký thành viên</a> </li>
+                            </ul>
+                        </div>
+                       
+                        <div class="col-xs-3">
+                            <div @*class="col-lg-3  col-md-3 col-sm-6 col-xs-12 "*@>
+                                <h3> Follow Us </h3>
+                                @*<ul>
+                                    <li>
+                                        <div class="input-append newsletter-box text-center">
+                                            <input type="text" class="form-control" placeholder="Email..." />
+                                            <button class="btn-warning btn-block btn-md" type="button"> ĐĂNG KÝ <i class="fa fa-long-arrow-right"> </i> </button>
+                                        </div>
+                                    </li>
+                                </ul*@
+                                @*<ul class="social">
+                                    <li> <a href="https://goo.gl/fpbZzR"> <i class="fa fa-facebook-official" aria-hidden="true"></i> </a> </li>
+                                    <li> <a href="https://goo.gl/mfjtLE"> <i class="fa fa-youtube-play" aria-hidden="true"></i> </a> </li>
+                                </ul>*@
+                            </div>
+                            <ul class="footer-social ">
+                                <li>
+                                    <a rel="nofollow" href="https://www.youtube.com/channel/UCY5sRvA1Lf5AkFYaWcItODg" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i> Youtube</a>
+                                 </li>
+                                <li>
+                                    <a rel="nofollow" href="https://www.facebook.com/ndat98" title="Facebook" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+                                </li>
+                                
+                            </ul>
+                           
+                        </div>  
+                    </div>
+                    <div class="container">
+                        <h style="color:white" > Copyright © 2020 by David</h>
+                    </div>
+                    <!--/.row-->
+                </div>
+                <!--/.container-->
+            </div>
+            <!--/.footer-->
+            
+            @*<div style="background-color: #087BB0" class="footer-bottom">
+                
+            </div>*@
+            <!--/.footer-bottom-->
+        </footer>
+    </div>
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="/Content/Client/js/jquery.js"></script>
+    @*DataTables*@
+    <script src="/Content/Client/js/jquery.dataTables.min.js"></script>
+    @*!DataTables*@
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/Content/Client/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#thongBaoThanhCong').delay(3000).slideUp();
+        });
+    </script>
+    @RenderSection("jsFooter", required: false)
+</body>
+</html>

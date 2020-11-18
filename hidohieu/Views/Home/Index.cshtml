@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-3">
+                <p style="color:#FCF" class="fa fa-bars"><i aria-hidden="true"></i><font style="color:#087BB0">Thể Loại</font></p>
+                @Html.Action("ShowCategory", "Home")
+    </div>
+    <div style="width:71%" class="col-md-9">
+        @*sách nổi bật*@
+        <div  row carousel-holder">
+            <div  class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    
+                    <div class="carousel-inner">
+                        <div  class="item active">
+                            <a  href="/Product/Details/40">
+                                <img src="~/images/vtruyen.jpg" style="object-fit: cover; width: 800px; height: 400px;" alt="slideImage1" />
+                            </a>                           
+                        </div>
+                        <div class="item">
+                            <a href="/Product/Details/41">
+                                <img src="~/images/banner_matbiec.jpg" style="object-fit: cover; width: 100%; height: 400px;" alt="sildeImage2" />
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a  href="/Product/Details/42">
+                                <img src="~/images/banner_tony.jpg" style="object-fit: cover; width: 100%; height: 400px;" alt="slideImage3" />
+                            </a>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @*kết thúc sách nổi bật*@
+        <hr />
+        @*sách bán chạy*@
+        <h3><font style="color:#087BB0; line-height: 2.1;">Truyện Mới</font></h3>
+        <div style="" class ="row">
+            @Html.Action("TopDateProduct","Product")            
+        </div>
+        @*kết thúc sách nổi bật*@
+
+        @*Những cuốn sách trong kho và xem tất cả*@
+        <hr />
+        <h3><font style="color:#087BB0">Flash Sale</font></h3>
+        <p style="text-align:right"><a href="/Product/ShowAllProduct">Xem tất cả</a></p>      
+        <div class="row">
+            @Html.Action("DidYouSee", "Product")
+        </div>
+        @*kết thúc sách mới cập nhật*@
+    </div>
+</div>

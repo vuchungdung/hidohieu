@@ -1,0 +1,97 @@
+﻿@model hidohieu.Models.SanPham
+
+@{
+    ViewBag.Title = "DetailsProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@Model.TenSanPham</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+        <dt>
+            NXB
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaCungCap.TenNXB)
+        </dd>
+
+        <dt>
+            Tác giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaSanXuat.TenTG)
+        </dd>
+
+        <dt>
+            Thể loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSanPham.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            <p><span>@(Model.GiaBan.HasValue ? Model.GiaBan.Value.ToString("N0") : "Liên hệ")</span> VND</p>
+        </dd>
+
+        <dt>
+            Sơ lược
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiDich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhSanPham)
+        </dt>
+
+        <dd>
+            <img src="/images/@Model.AnhSanPham" width="180" height="250" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Trở về", "ShowListProduct") |
+    @Html.ActionLink("Sửa", "UpdateProduct", new { id = Model.MaSanPham })
+</p>

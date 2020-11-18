@@ -1,0 +1,45 @@
+﻿@model IEnumerable<hidohieu.Models.SanPham>
+@{
+    ViewBag.Title = "Sách theo chủ đề";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <p  style="color:#087BB0" class="fa fa-bars" ><i  aria-hidden="true"></i><font style="color:#087BB0; text-align:center"> DANH MỤC SÁCH</font></p>
+        @*Call partital view ShowCategory in Home*@
+        @Html.Action("ShowCategory", "Home")
+    </div>
+    <div class="col-md-9">
+        @*sách theo chủ đề*@
+        <h3 style="color:#087BB0">@ViewBag.TenLoai</h3>
+        <hr />
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <a title="@item.TenSanPham" href="/Product/Details/@item.MaSanPham">
+                            <img src="/images/@item.AnhSanPham" alt="@item.AnhSanPham" width="180" height="250" />
+                        </a>
+                        <div class="caption">
+                            <h4 >
+                                <a style="color:#087BB0" title="@item.TenSanPham" href="/Product/Details/@item.MaSanPham" >@(item.TenSanPham.Length > 26 ? item.TenSanPham.Substring(0, 22) + "..." : item.TenSanPham)</a>
+                            </h4>
+                            <a style="background-color: #ec971f;" class="btn btn-warning" href="/Cart/AddItem/?id=@item.MaSanPham&quantity=1">Mua</a>
+                            @if (item.GiaBan > 0)
+                            {
+                                <h4 class="pull-right" style="color:black;">@item.GiaBan.Value.ToString("N0") VND</h4>
+                            }
+                            else
+                            {
+                                <h4 class="pull-right" style="color:red;">Liên hệ</h4>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @*kết thúc sách theo chủ đề*@
+    </div>
+</div>

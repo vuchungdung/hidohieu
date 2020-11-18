@@ -1,0 +1,52 @@
+﻿@using hidohieu.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<SanPham>
+@{
+    ViewBag.Title = "ShowAllProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <p class="lead">DANH MỤC SẢN PHẨM</p>
+        @Html.Action("ShowCategory", "Home")
+    </div>
+    <div class="col-md-9">
+        <h3>Tất cả sách</h3>
+        <hr />
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <a title="@item.TenSanPham" href="/Product/Details/@item.MaSanPham">
+                            <img src="/images/@item.AnhSanPham" alt="@item.AnhSanPham" width="180" height="250" />
+                        </a>
+                        <div class="caption">
+                            <h4>
+                                <a title="@item.TenSanPham" href="/Product/Details/@item.MaSanPham" style="color:green;">@(item.TenSanPham.Length > 26 ? item.TenSanPham.Substring(0, 22) + "..." : item.TenSanPham)</a>
+                            </h4>
+                            <a class="btn btn-warning" href="/Cart/AddItem/?id=@item.MaSanPham&quantity=1">Mua hàng</a>
+                            @if (item.GiaBan > 0)
+                            {
+                                <h4 class="pull-right" style="color:red;">@item.GiaBan.Value.ToString("N0") VND</h4>
+                            }
+                            else
+                            {
+                                <h4 class="pull-right" style="color:red;">Liên hệ</h4>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @*tạo link liên kết trang*@
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("ShowAllProduct", new { page = page }))
+    </div>
+</div>
+
+
+
+
